@@ -51,3 +51,10 @@ term_scores = {feature_names[i]: tfidf_scores[i] for i in range(len(feature_name
 
 # Sort terms by TF-IDF scores in descending order
 sorted_terms = sorted(term_scores.items(), key=lambda x: x[1], reverse=True)
+
+# Extract the top terms
+num_sentences = 2  # Change to a smaller value for a shorter summary
+top_terms = [term for term, score in sorted_terms[:num_sentences]]
+
+# Extract sentences that contain the top terms
+summary_sentences = [sentence for sentence in sentences if any(term in sentence.lower() for term in top_terms)]
