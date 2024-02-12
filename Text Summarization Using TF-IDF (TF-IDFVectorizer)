@@ -67,7 +67,7 @@ def _score_sentences(tfidf_matrix) -> dict:
     return sentenceValue
 
 sentenceValue = _score_sentences(tfidf_matrix)
-print(sentenceValue)
+#print(sentenceValue)                                       #(if you want to see the values)
 
 # Find the threshold
 def _find_average_score(sentenceValue) -> int:
@@ -85,4 +85,21 @@ def _find_average_score(sentenceValue) -> int:
     return average
 
 threshold = _find_average_score(sentenceValue)
-print(threshold)
+#print(threshold)                                         #(if you want to see the values)
+
+# Generate the summary
+def _generate_summary(sentences, sentenceValue, threshold):
+    sentence_count = 0
+    summary = ''
+
+    for i in range(len(sentences)):
+        if i in sentenceValue and sum(sentenceValue[i].values()) >= (threshold):
+            summary += " " + sentences[i]
+            sentence_count += 1
+
+    return summary
+
+summary = _generate_summary(sentences, sentenceValue, threshold)           # use for more summery
+print(summary)
+print(f"total length in document", len(document))
+print(f"total length in summery", len(summary))
