@@ -45,3 +45,9 @@ feature_names = vectorizer.get_feature_names_out()
 
 # Get TF-IDF scores for each term
 tfidf_scores = tfidf_matrix.toarray()[0]
+
+# Create a dictionary with terms and their TF-IDF scores
+term_scores = {feature_names[i]: tfidf_scores[i] for i in range(len(feature_names))}
+
+# Sort terms by TF-IDF scores in descending order
+sorted_terms = sorted(term_scores.items(), key=lambda x: x[1], reverse=True)
