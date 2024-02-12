@@ -37,3 +37,7 @@ stemmed_words = [stemmer.stem(word) for word in filtered_words]
 
 # Combine stemmed words to form preprocessed text
 preprocessed_text = ' '.join(stemmed_words)
+
+# TF-IDF vectorization
+vectorizer = TfidfVectorizer()
+tfidf_matrix = vectorizer.fit_transform([preprocessed_text])
