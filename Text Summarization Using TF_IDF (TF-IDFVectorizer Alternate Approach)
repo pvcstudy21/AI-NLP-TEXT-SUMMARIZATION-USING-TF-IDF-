@@ -7,3 +7,16 @@ from nltk.stem import PorterStemmer
 import nltk
 
 nltk.download('all')
+
+# Sample document
+document = """
+Swords, more than just blades of metal, are whispers of history etched in cold steel. 
+From the bronze thrusting spears of ancient Egypt to the razor-sharp katanas of feudal Japan, each curve and bevel tells a tale. 
+They were instruments of both war and nobility, wielded by knights in shining armor and samurai in quiet contemplation. 
+Though their reign as primary weapons has passed, swords remain symbols of power, precision, and a legacy forged in battlefields and whispered legends. 
+Their allure, sharp as ever, beckons us to imagine the clash of steel, the clang of honor, and the echoes of a bygone era when a sword was more than just a weapon, it was an extension of the soul.
+"""
+
+#document = "India boasts a rich and diverse history that spans thousands of years, characterized by a tapestry of civilizations, empires, and cultural achievements. The ancient Indus Valley Civilization, one of the world's earliest urban cultures, flourished around 3300–1300 BCE, showcasing advanced city planning and trade networks."
+
+#document = "Optacloud enables companies to automate their cloud savings by using ML-powered optimization to maximize performance across APIs and microservices (CPaaS, generative AI apps, etc). Companies can reduce cloud costs, improve latency & minimize carbon footprint at 0 upfront cost. Optacloud is cloud agnostic (AWS, GCP, Azure, Alibaba, DigitalOcean, etc) and integrates in less than a minute, without any extra engineering effort."
