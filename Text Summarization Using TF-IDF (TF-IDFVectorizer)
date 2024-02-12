@@ -41,3 +41,30 @@ preprocessed_text = ' '.join(stemmed_words)
 # TF-IDF vectorization
 vectorizer = TfidfVectorizer()
 tfidf_matrix = vectorizer.fit_transform([preprocessed_text])
+
+# Score the sentences
+def _score_sentences(tfidf_matrix) -> dict:
+    """
+    Score a sentence by its word's TF
+    Basic algorithm: adding the TF frequency of every non-stop word in a sentence divided by total no of words in a sentence.
+    :rtype: dict
+    """
+    sentenceValue = {}
+
+    # Find non-zero elements in the sparse matrix
+    nonzero_elements = find(tfidf_matrix)
+
+    for i in range(len(nonzero_elements[0])):
+        row = nonzero_elements[0][i]
+        col = nonzero_elements[1][i]
+        value = nonzero_elements[2][i]
+
+        if row not in sentenceValue:
+            sentenceValue[row] = {}
+
+        sentenceValue[row][col] = value
+
+    return sentenceValue
+
+sentenceValue = _score_sentences(tfidf_matrix)
+print(sentenceValue)
