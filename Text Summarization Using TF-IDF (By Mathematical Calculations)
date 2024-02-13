@@ -164,3 +164,20 @@ def _find_average_score(sentenceValue) -> int:
 
 threshold = _find_average_score(sentenceValue)
 print(threshold)
+
+# 9. Generate the summary
+def _generate_summary(sentences, sentenceValue, threshold):
+    sentence_count = 0
+    summary = ''
+
+    for sentence in sentences:
+        if sentence[:15] in sentenceValue and sentenceValue[sentence[:15]] >= (threshold):
+            summary += " " + sentence
+            sentence_count += 1
+
+    return summary
+
+summary = _generate_summary(sentences, sentenceValue, threshold)      # can also use 1.2*threshold
+print(summary)
+print(f"total length in document", len(document))
+print(f"total length in summery", len(summary))
