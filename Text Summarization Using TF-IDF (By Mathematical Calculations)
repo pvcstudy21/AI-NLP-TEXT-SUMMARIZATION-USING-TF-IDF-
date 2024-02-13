@@ -86,3 +86,20 @@ def _create_documents_per_words(freq_matrix):
 
 count_doc_per_words = _create_documents_per_words(freq_matrix)
 print(count_doc_per_words)
+
+# 5. Calculate IDF and generate a matrix
+def _create_idf_matrix(freq_matrix, count_doc_per_words, total_documents):
+    idf_matrix = {}
+
+    for sent, f_table in freq_matrix.items():
+        idf_table = {}
+
+        for word in f_table.keys():
+            idf_table[word] = math.log10(total_documents / float(count_doc_per_words[word]))
+
+        idf_matrix[sent] = idf_table
+
+    return idf_matrix
+
+idf_matrix = _create_idf_matrix(freq_matrix, count_doc_per_words, total_documents)
+print(idf_matrix)
