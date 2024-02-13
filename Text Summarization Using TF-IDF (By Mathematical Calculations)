@@ -103,3 +103,22 @@ def _create_idf_matrix(freq_matrix, count_doc_per_words, total_documents):
 
 idf_matrix = _create_idf_matrix(freq_matrix, count_doc_per_words, total_documents)
 print(idf_matrix)
+
+# 6. Calculate TF-IDF and generate a matrix
+def _create_tf_idf_matrix(tf_matrix, idf_matrix):
+    tf_idf_matrix = {}
+
+    for (sent1, f_table1), (sent2, f_table2) in zip(tf_matrix.items(), idf_matrix.items()):
+
+        tf_idf_table = {}
+
+        for (word1, value1), (word2, value2) in zip(f_table1.items(),
+                                                    f_table2.items()):  # here, keys are the same in both the table
+            tf_idf_table[word1] = float(value1 * value2)
+
+        tf_idf_matrix[sent1] = tf_idf_table
+
+    return tf_idf_matrix
+
+tf_idf_matrix = _create_tf_idf_matrix(tf_matrix, idf_matrix)
+print(tf_idf_matrix)
