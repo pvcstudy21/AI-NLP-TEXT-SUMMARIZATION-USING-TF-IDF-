@@ -20,3 +20,8 @@ Their allure, sharp as ever, beckons us to imagine the clash of steel, the clang
 #document = "India boasts a rich and diverse history that spans thousands of years, characterized by a tapestry of civilizations, empires, and cultural achievements. The ancient Indus Valley Civilization, one of the world's earliest urban cultures, flourished around 3300–1300 BCE, showcasing advanced city planning and trade networks."
 
 #document = "Optacloud enables companies to automate their cloud savings by using ML-powered optimization to maximize performance across APIs and microservices (CPaaS, generative AI apps, etc). Companies can reduce cloud costs, improve latency & minimize carbon footprint at 0 upfront cost. Optacloud is cloud agnostic (AWS, GCP, Azure, Alibaba, DigitalOcean, etc) and integrates in less than a minute, without any extra engineering effort."
+
+# 1. Tokenize the sentences
+sentences = sent_tokenize(document)
+total_documents = len(sentences)
+print(sentences)
