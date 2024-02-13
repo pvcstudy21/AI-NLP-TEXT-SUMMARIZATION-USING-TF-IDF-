@@ -146,3 +146,21 @@ def _score_sentences(tf_idf_matrix) -> dict:
 
 sentenceValue = _score_sentences(tf_idf_matrix)
 print(sentenceValue)
+
+# 8. Find the threshold
+def _find_average_score(sentenceValue) -> int:
+    """
+    Find the average score from the sentence value dictionary
+    :rtype: int
+    """
+    sumValues = 0
+    for entry in sentenceValue:
+        sumValues += sentenceValue[entry]
+
+    # Average value of a sentence from original summary_text
+    average = (sumValues / len(sentenceValue))
+
+    return average
+
+threshold = _find_average_score(sentenceValue)
+print(threshold)
