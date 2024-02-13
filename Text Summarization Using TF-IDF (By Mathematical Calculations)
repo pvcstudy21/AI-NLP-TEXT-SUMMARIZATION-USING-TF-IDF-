@@ -52,3 +52,21 @@ def _create_frequency_matrix(sentences):
 
 freq_matrix = _create_frequency_matrix(sentences)
 print(freq_matrix)
+
+# 3. Calculate TermFrequency and generate a matrix
+def _create_tf_matrix(freq_matrix):
+    tf_matrix = {}
+
+    for sent, f_table in freq_matrix.items():
+        tf_table = {}
+
+        count_words_in_sentence = len(f_table)
+        for word, count in f_table.items():
+            tf_table[word] = count / count_words_in_sentence
+
+        tf_matrix[sent] = tf_table
+
+    return tf_matrix
+
+tf_matrix = _create_tf_matrix(freq_matrix)
+print(tf_matrix)
