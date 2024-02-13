@@ -25,3 +25,30 @@ Their allure, sharp as ever, beckons us to imagine the clash of steel, the clang
 sentences = sent_tokenize(document)
 total_documents = len(sentences)
 print(sentences)
+
+# 2. Create the Frequency matrix of the words in each sentence.
+def _create_frequency_matrix(sentences):
+    frequency_matrix = {}
+    stopWords = set(stopwords.words("english"))
+    ps = PorterStemmer()
+
+    for sent in sentences:
+        freq_table = {}
+        words = word_tokenize(sent)
+        for word in words:
+            word = word.lower()
+            word = ps.stem(word)
+            if word in stopWords:
+                continue
+
+            if word in freq_table:
+                freq_table[word] += 1
+            else:
+                freq_table[word] = 1
+
+        frequency_matrix[sent[:15]] = freq_table
+
+    return frequency_matrix
+
+freq_matrix = _create_frequency_matrix(sentences)
+print(freq_matrix)
