@@ -122,3 +122,27 @@ def _create_tf_idf_matrix(tf_matrix, idf_matrix):
 
 tf_idf_matrix = _create_tf_idf_matrix(tf_matrix, idf_matrix)
 print(tf_idf_matrix)
+
+# 7. Score the sentences
+def _score_sentences(tf_idf_matrix) -> dict:
+    """
+    score a sentence by its word's TF
+    Basic algorithm: adding the TF frequency of every non-stop word in a sentence divided by total no of words in a sentence.
+    :rtype: dict
+    """
+
+    sentenceValue = {}
+
+    for sent, f_table in tf_idf_matrix.items():
+        total_score_per_sentence = 0
+
+        count_words_in_sentence = len(f_table)
+        for word, score in f_table.items():
+            total_score_per_sentence += score
+
+        sentenceValue[sent] = total_score_per_sentence / count_words_in_sentence
+
+    return sentenceValue
+
+sentenceValue = _score_sentences(tf_idf_matrix)
+print(sentenceValue)
