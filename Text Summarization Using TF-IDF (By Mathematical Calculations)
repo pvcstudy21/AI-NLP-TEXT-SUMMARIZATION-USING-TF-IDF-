@@ -70,3 +70,19 @@ def _create_tf_matrix(freq_matrix):
 
 tf_matrix = _create_tf_matrix(freq_matrix)
 print(tf_matrix)
+
+# 4. Creating a table for documents per words
+def _create_documents_per_words(freq_matrix):
+    word_per_doc_table = {}
+
+    for sent, f_table in freq_matrix.items():
+        for word, count in f_table.items():
+            if word in word_per_doc_table:
+                word_per_doc_table[word] += 1
+            else:
+                word_per_doc_table[word] = 1
+
+    return word_per_doc_table
+
+count_doc_per_words = _create_documents_per_words(freq_matrix)
+print(count_doc_per_words)
